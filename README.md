@@ -6,4 +6,6 @@ This library includes:
  - Command Manager
  - Gui Manager
  - Item Manager
+ - Base64 Serializer
+ - Chat Manager
 
