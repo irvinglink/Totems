@@ -1,0 +1,7 @@
+Database:
+  # MARIADB, MYSQL, SQLITE or YAML (Default)
+  type: YAML
+  host: localhost
+  database: iferaclans
+  username: root
+  password: password

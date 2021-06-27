@@ -1,0 +1,6 @@
+Prefix: "&8[&6YourPrefix&8]"
+Command_No_Exists:  "&cThat command does not exists&7."
+No_Permission: "&cYou do not have permission to do this&7."
+Wrong_Usage: "&cWrong usage. &b%iferaclans_command_syntax%"
+Not_Use_Symbols: "&cYou can not use symbols&7."
+Reload_Files: "&aConfiguration files had been reloaded&7."

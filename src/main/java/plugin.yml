@@ -1,0 +1,4 @@
+main: com.github.irvinglink.AmethystLib.MClass
+name: YourPluginName
+version: 1.0
+api-version: 1.14
