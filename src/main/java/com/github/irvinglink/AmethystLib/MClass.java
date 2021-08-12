@@ -1,5 +1,6 @@
 package com.github.irvinglink.AmethystLib;
 
+import com.github.irvinglink.AmethystLib.editor.EditorHandler;
 import com.github.irvinglink.AmethystLib.gui.manager.IMenu;
 import com.github.irvinglink.AmethystLib.listeners.GuiEvents;
 import com.github.irvinglink.AmethystLib.storage.Data;
@@ -58,6 +59,8 @@ public class MClass extends JavaPlugin {
     public void onEnable() {
 
         getServer().getPluginManager().registerEvents(new GuiEvents(), this);
+        new EditorHandler();
+
     }
 
     @Override

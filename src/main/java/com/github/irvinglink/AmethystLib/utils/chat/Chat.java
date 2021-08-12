@@ -37,6 +37,10 @@ public final class Chat extends HexManager {
         return ChatColor.translateAlternateColorCodes('&', textToTranslate);
     }
 
+    public String removeColor(String str) {
+        return ChatColor.stripColor(str);
+    }
+
     public String firstCharUpper(String value) {
         if (value == null)
             return null;
