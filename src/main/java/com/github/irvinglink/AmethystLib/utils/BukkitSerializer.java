@@ -1,5 +1,6 @@
 package com.github.irvinglink.AmethystLib.utils;
 
+import com.github.irvinglink.AmethystLib.utils.chat.Chat;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
@@ -35,6 +36,7 @@ public class BukkitSerializer {
 
         try {
 
+            new Chat();
             ByteArrayInputStream inputStream = new ByteArrayInputStream(Base64Coder.decodeLines(base64));
             BukkitObjectInputStream bukkitInputStream = new BukkitObjectInputStream(inputStream);
 

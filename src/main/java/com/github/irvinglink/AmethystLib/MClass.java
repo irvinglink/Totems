@@ -10,6 +10,7 @@ import com.github.irvinglink.AmethystLib.storage.database.MySQL;
 import com.github.irvinglink.AmethystLib.storage.database.SQLite;
 import com.github.irvinglink.AmethystLib.utils.chat.Chat;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -86,7 +87,10 @@ public class MClass extends JavaPlugin {
         return this.version;
     }
 
-    // DATA
+    /**
+     * Amethystlib supports MySQL, MariaDB, SQLite and YAML.
+     * This method will define the database that the plugin will use.
+     */
     void setupDatabase(String host, String database, String username, String password) {
 
         DatabaseType databaseType = DatabaseType.valueOf(getConfig().getString("Database.type").toUpperCase());
@@ -116,6 +120,9 @@ public class MClass extends JavaPlugin {
 
     }
 
+    /**
+     * Creates the common files such as config.yml and lang.yml
+     */
     void createFiles() {
 
         File mainFolder = getDataFolder();
@@ -147,6 +154,9 @@ public class MClass extends JavaPlugin {
 
     }
 
+    /**
+     * Updates the old data of the older version of the plugin to the newer data from the plugin.
+     */
     void updateFiles(File... files) {
 
         getServer().getLogger().info("[YourPlugin] Updating files...");
@@ -174,16 +184,22 @@ public class MClass extends JavaPlugin {
 
     }
 
+    /**
+     * Reload the config of your plugin. This is commonly used in reload commands.
+     * To add more files to reload copy the code section.
+     */
     public void reloadConfig() {
-        if (this.config != null) {
+        if (this.config != null)
             this.config = YamlConfiguration.loadConfiguration(this.configFile);
-        }
 
         if (this.lang != null)
             this.lang = YamlConfiguration.loadConfiguration(this.langFile);
 
     }
 
+    /**
+     * This save the config of your plugins this is used when you update data.
+     */
     public void saveConfig() {
         if (this.config != null)
             try {
@@ -210,7 +226,7 @@ public class MClass extends JavaPlugin {
 
         try {
             this.config.load(this.configFile);
-        } catch (IOException | org.bukkit.configuration.InvalidConfigurationException e) {
+        } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
 
@@ -225,7 +241,7 @@ public class MClass extends JavaPlugin {
 
         try {
             this.lang.load(this.langFile);
-        } catch (IOException | org.bukkit.configuration.InvalidConfigurationException e) {
+        } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
 
@@ -233,10 +249,17 @@ public class MClass extends JavaPlugin {
 
     }
 
+    /**
+     * This method returns the menus/gui opened by a player.
+     */
     public Map<UUID, IMenu> getPlayerMenus() {
         return playerMenus;
     }
 
+    /**
+     * Returns the database used by the plugin (MySQL, MariaDB, SQLite, YAML)
+     * Take a look to {@link Data}
+     */
     public Data getDatabase() {
         return database;
     }

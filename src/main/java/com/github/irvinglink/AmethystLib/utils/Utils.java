@@ -24,12 +24,15 @@ public class Utils {
             newArray[k++] = array[i];
 
         }
-
         return newArray;
     }
 
+    @Deprecated
+    /**
+     * Used to make a page system such as chat or inventories, etc.
+     * Deprecated: Moved to {@link Paginator}
+     */
     public List<String> getPageElements(int page, int perpage_elements, List<String> list) {
-
         List<String> output = Collections.synchronizedList(new ArrayList<>());
 
         final int temp_perpage_elements = Math.min(list.size(), perpage_elements);

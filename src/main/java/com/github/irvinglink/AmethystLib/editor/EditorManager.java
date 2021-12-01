@@ -24,6 +24,7 @@ public class EditorManager implements Listener {
         return editor_cache.getOrDefault(player, null);
     }
 
+
     public static void setEditor(Player player, Enum<?> type, Object object) {
         editor_cache.put(player, new AbstractMap.SimpleEntry<>(type, object));
         player.closeInventory();

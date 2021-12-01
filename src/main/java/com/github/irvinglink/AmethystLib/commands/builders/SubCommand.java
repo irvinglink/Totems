@@ -4,7 +4,8 @@ import com.github.irvinglink.AmethystLib.MClass;
 import com.github.irvinglink.AmethystLib.utils.chat.Chat;
 import org.bukkit.command.CommandSender;
 
-public interface SubCommand {
+
+public interface SubCommand extends Runnable {
 
     MClass plugin = MClass.getPlugin(MClass.class);
     Chat chat = plugin.getChat();

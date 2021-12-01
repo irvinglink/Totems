@@ -41,11 +41,13 @@ public abstract class CommandBuilder implements CommandExecutor {
         StringBuilder x = new StringBuilder();
         x.append(this.prefix);
         x.append(" ");
+        
         if (!this.console && !(sender instanceof Player)) {
             x.append("&aOnly players can use this command");
             sender.sendMessage(this.chat.str(x.toString()));
             return true;
         }
+
         execute(sender, args);
         return false;
     }

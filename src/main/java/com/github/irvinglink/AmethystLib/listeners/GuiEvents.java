@@ -2,6 +2,8 @@ package com.github.irvinglink.AmethystLib.listeners;
 
 import com.github.irvinglink.AmethystLib.gui.manager.GuiManager;
 import com.github.irvinglink.AmethystLib.gui.manager.IMenu;
+import com.github.irvinglink.AmethystLib.utils.items.CustomHead;
+import com.github.irvinglink.AmethystLib.utils.items.CustomItems;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
