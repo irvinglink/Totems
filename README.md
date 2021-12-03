@@ -5,9 +5,13 @@ This library includes:
  - SQL/YML/MYSQL Manager
  - Command Manager
  - Gui Manager
- - Item Manager
+ - Item Builder
  - Base64 Serializer
  - Chat Manager
  - Reflection Utils
  - Packets
+ - NBT Utils
+ - PersistentDataContainer Utils
+ - Paginator
+ - TimeUtils
 
