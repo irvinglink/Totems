@@ -8,4 +8,6 @@ This library includes:
  - Item Manager
  - Base64 Serializer
  - Chat Manager
+ - Reflection Utils
+ - Packets
 
