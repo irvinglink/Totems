@@ -8,7 +8,7 @@ This library includes:
  - Item Builder
  - Base64 Serializer
  - Chat Manager
- - Reflection Utils
+ - Reflection Utils (Include 1.17 modifications)
  - Packets
  - NBT Utils
  - PersistentDataContainer Utils
