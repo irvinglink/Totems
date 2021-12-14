@@ -14,7 +14,7 @@ public class ReplacementHook implements IReplacementHook {
 
     public String replace(OfflinePlayer player, OfflinePlayer target, String str, String var) {
 
-        switch (var) {
+        switch (var.toLowerCase()) {
             case "prefix":
                 return this.chat.getPrefix();
 
@@ -26,12 +26,10 @@ public class ReplacementHook implements IReplacementHook {
                 if (target == null) return "null";
                 return target.getName();
 
-            case "player_displayName":
             case "player_displayname":
                 if (player == null) return "null";
                 return Objects.requireNonNull(player.getPlayer()).getDisplayName();
 
-            case "target_displayName":
             case "target_displayname":
                 if (target == null) return "null";
                 return Objects.requireNonNull(target.getPlayer()).getDisplayName();

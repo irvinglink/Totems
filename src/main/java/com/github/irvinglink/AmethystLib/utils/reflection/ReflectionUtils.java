@@ -2,12 +2,14 @@ package com.github.irvinglink.AmethystLib.utils.reflection;
 
 import com.github.irvinglink.AmethystLib.MClass;
 import com.github.irvinglink.AmethystLib.utils.chat.Chat;
+import net.minecraft.network.protocol.game.PacketPlayOutPlayerInfo;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class ReflectionUtils {
 
-    protected static Chat chat = MClass.getPlugin(MClass.class).getChat();
+    protected static MClass plugin = MClass.getPlugin(MClass.class);
+    protected static Chat chat = plugin.getChat();
 
     protected static void sendPacket(Player player, Object packet) {
         try {
@@ -20,10 +22,15 @@ public class ReflectionUtils {
         }
     }
 
-    protected static Class<?> getNMSClass(String name) {
+    public static Class<?> getNMSClass(String name) {
+
+        String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+        int versionInt = Integer.parseInt((Bukkit.getBukkitVersion().split("-")[0]).split("\\.")[1]);
+
+        String minecraftPacketVersion = (versionInt >= 17) ? "net.minecraft.network.protocol.game." :"net.minecraft.server." + version + ".";
+
         try {
-            return Class.forName("net.minecraft.server."
-                    + Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3] + "." + name);
+            return Class.forName(minecraftPacketVersion + name);
         } catch (ClassNotFoundException ignored) {
             ignored.printStackTrace();
         }

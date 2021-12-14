@@ -2,6 +2,7 @@ package com.github.irvinglink.AmethystLib.utils.nms;
 
 import com.github.irvinglink.AmethystLib.utils.reflection.ReflectionUtils;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -53,6 +54,32 @@ public final class PacketUtils extends ReflectionUtils {
         } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public static void sendActionBar(final Player player, final String message, long duration) {
+        sendActionBar(player, message);
+
+        if (duration >= 0) {
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    sendActionBar(player, "");
+                }
+            }.runTaskLater(plugin, 20* (duration + 1));
+        }
+
+        while (duration > 40) {
+            duration -= 40;
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    sendActionBar(player, message);
+                }
+            }.runTaskLater(plugin, 20 * duration);
+
+        }
+
     }
 
 }
