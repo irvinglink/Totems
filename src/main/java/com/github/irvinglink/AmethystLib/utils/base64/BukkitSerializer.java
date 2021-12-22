@@ -1,4 +1,4 @@
-package com.github.irvinglink.AmethystLib.utils;
+package com.github.irvinglink.AmethystLib.utils.base64;
 
 import com.github.irvinglink.AmethystLib.utils.chat.Chat;
 import org.bukkit.inventory.ItemStack;

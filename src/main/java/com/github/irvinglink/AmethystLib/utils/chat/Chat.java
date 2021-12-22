@@ -2,6 +2,7 @@ package com.github.irvinglink.AmethystLib.utils.chat;
 
 
 import com.github.irvinglink.AmethystLib.MClass;
+import com.github.irvinglink.AmethystLib.utils.chat.hex.HexManager;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -25,7 +26,7 @@ import java.util.regex.Pattern;
  *   <li><p>{@link #getPrefix()} Returns the prefix from lang.yml</p></li>
  * </ul>
  */
-public final class Chat extends HexManager {
+public final class Chat {
 
     private final MClass plugin = MClass.getPlugin(MClass.class);
 
@@ -47,7 +48,7 @@ public final class Chat extends HexManager {
         int minorVersion = Integer.parseInt(serverVersion.substring(index + 1, finalIndex));
 
         if (minorVersion >= 16)
-            return hexMessage(textToTranslate);
+            textToTranslate = HexManager.getInstance().toChatColorString((textToTranslate));
 
         return ChatColor.translateAlternateColorCodes('&', textToTranslate);
     }
@@ -88,7 +89,8 @@ public final class Chat extends HexManager {
     /**
      * Create a clicked message. This can be used to suggest
      * a command to a player in chat.
-     * @param text Your String.
+     *
+     * @param text  Your String.
      * @param value Suggest a command.
      */
     public TextComponent clickedMessage(String text, String value) {
@@ -102,9 +104,10 @@ public final class Chat extends HexManager {
     /**
      * Create a clicked message. This can be used to suggest
      * a command to a player in chat with a hover message.
-     * @param text Your String.
+     *
+     * @param text      Your String.
      * @param hover_msg Hover text.
-     * @param value Suggest a command.
+     * @param value     Suggest a command.
      */
     public TextComponent clickedMessage_Hover(String text, String hover_msg, String value) {
 
@@ -124,8 +127,9 @@ public final class Chat extends HexManager {
     /**
      * Create a clicked message that runs a command. This can be used to run
      * a command to a player in chat.
+     *
      * @param text Your String.
-     * @param cmd Command to run.
+     * @param cmd  Command to run.
      */
     public TextComponent clickMessageCmd(String text, String cmd) {
 
@@ -163,7 +167,7 @@ public final class Chat extends HexManager {
     /**
      * Return the registered placeholders.
      *
-     * @return  Map with name of the placeholder and hooker class.
+     * @return Map with name of the placeholder and hooker class.
      */
     public Map<String, IReplacementHook> getHooks() {
         return hookMap;
@@ -172,7 +176,7 @@ public final class Chat extends HexManager {
     /**
      * Replace the text with placeholders from PlaceholderAPI or
      * registered by the plugin (for example: {@link ReplacementHook}).
-     *
+     * <p>
      * This method inherits from {@link #replace(OfflinePlayer, OfflinePlayer, String, String, boolean)}
      */
     public String replace(String text, boolean color) {
@@ -182,7 +186,7 @@ public final class Chat extends HexManager {
     /**
      * Replace the text with placeholders from PlaceholderAPI or
      * registered by the plugin (for example: {@link ReplacementHook}).
-     *
+     * <p>
      * This method inherits from {@link #replace(OfflinePlayer, OfflinePlayer, String, String, boolean)}
      */
     public String replace(OfflinePlayer player, String text, boolean color) {
@@ -192,7 +196,7 @@ public final class Chat extends HexManager {
     /**
      * Replace the text with placeholders from PlaceholderAPI or
      * registered by the plugin (for example: {@link ReplacementHook}).
-     *
+     * <p>
      * This method inherits from {@link #replace(OfflinePlayer, OfflinePlayer, String, String, boolean)}
      */
     public String replace(OfflinePlayer player, String str, String text, boolean color) {
@@ -202,7 +206,7 @@ public final class Chat extends HexManager {
     /**
      * Replace the text with placeholders from PlaceholderAPI or
      * registered by the plugin (for example: {@link ReplacementHook}).
-     *
+     * <p>
      * Note: Remove the PlaceholderAPI comment if you already hook it.
      */
     public String replace(OfflinePlayer player, OfflinePlayer target, String str, String text, boolean color) {
