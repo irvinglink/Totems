@@ -38,4 +38,17 @@ public class ReflectionUtils {
         return null;
     }
 
+    public static Class<?> getBukkitClass(String name) {
+        String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+        String minecraftPacketVersion =  "org.bukkit.craftbukkit." + version + ".";
+
+        try {
+            return Class.forName(minecraftPacketVersion + name);
+        } catch (ClassNotFoundException ignored) {
+            ignored.printStackTrace();
+        }
+
+        return null;
+    }
+
 }

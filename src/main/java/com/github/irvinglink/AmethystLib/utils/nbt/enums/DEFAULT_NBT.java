@@ -7,11 +7,10 @@ public enum DEFAULT_NBT {
     SUPER_SWORD("SuperSword"),
     ;
 
-    @Getter
-    private final String nbtId;
+    @Getter private final String nbtkey;
 
-    DEFAULT_NBT(String nbtId) {
-        this.nbtId = nbtId;
+    DEFAULT_NBT(String nbtkey) {
+        this.nbtkey = nbtkey;
     }
 
 }
