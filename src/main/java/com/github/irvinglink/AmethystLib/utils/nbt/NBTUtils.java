@@ -10,6 +10,7 @@ import java.util.Objects;
 
 public class NBTUtils extends ReflectionUtils {
 
+    // 1.17 uses a different NBT package net.minecraft.nbt
     public static ItemStack setKey(ItemStack itemStack, String key, String value) {
         if (itemStack == null || key == null) return null;
 

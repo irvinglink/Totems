@@ -36,7 +36,6 @@ public class BukkitSerializer {
 
         try {
 
-            new Chat();
             ByteArrayInputStream inputStream = new ByteArrayInputStream(Base64Coder.decodeLines(base64));
             BukkitObjectInputStream bukkitInputStream = new BukkitObjectInputStream(inputStream);
 

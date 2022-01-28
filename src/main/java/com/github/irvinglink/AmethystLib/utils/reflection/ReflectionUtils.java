@@ -2,7 +2,6 @@ package com.github.irvinglink.AmethystLib.utils.reflection;
 
 import com.github.irvinglink.AmethystLib.MClass;
 import com.github.irvinglink.AmethystLib.utils.chat.Chat;
-import net.minecraft.network.protocol.game.PacketPlayOutPlayerInfo;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -27,7 +26,22 @@ public class ReflectionUtils {
         String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
         int versionInt = Integer.parseInt((Bukkit.getBukkitVersion().split("-")[0]).split("\\.")[1]);
 
-        String minecraftPacketVersion = (versionInt >= 17) ? "net.minecraft.network.protocol.game." :"net.minecraft.server." + version + ".";
+        String minecraftPacketVersion = (versionInt >= 17) ? "net.minecraft.network.protocol.game." : "net.minecraft.server." + version + ".";
+
+        try {
+            return Class.forName(minecraftPacketVersion + name);
+        } catch (ClassNotFoundException ignored) {
+            ignored.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static Class<?> getNBTClass(String name) {
+        String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+        int versionInt = Integer.parseInt((Bukkit.getBukkitVersion().split("-")[0]).split("\\.")[1]);
+
+        String minecraftPacketVersion = (versionInt >= 17) ? "net.minecraft.nbt." : "net.minecraft.server." + version + ".";
 
         try {
             return Class.forName(minecraftPacketVersion + name);
@@ -40,7 +54,7 @@ public class ReflectionUtils {
 
     public static Class<?> getBukkitClass(String name) {
         String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
-        String minecraftPacketVersion =  "org.bukkit.craftbukkit." + version + ".";
+        String minecraftPacketVersion = "org.bukkit.craftbukkit." + version + ".";
 
         try {
             return Class.forName(minecraftPacketVersion + name);
@@ -50,5 +64,7 @@ public class ReflectionUtils {
 
         return null;
     }
+
+
 
 }
