@@ -127,13 +127,18 @@ public class HexManager {
 
     private String asGradient(TextColor start, String text, TextColor end) {
         final StringBuilder sb = new StringBuilder();
+
+        boolean containsBold = text.contains("&l");
+        if (containsBold) text = text.replace("&l", "");
+
         final int length = text.length();
+
 
         for (int i = 0; i < length; i++) {
             final int red = (int) (start.red + ((float) (end.red - start.red)) / (length - 1) * i);
             final int green = (int) (start.green + ((float) (end.green - start.green)) / (length - 1) * i);
             final int blue = (int) (start.blue + ((float) (end.blue - start.blue)) / (length - 1) * i);
-            sb.append("#").append(toHexString(red, green, blue)).append(text.charAt(i));
+            sb.append("#").append(toHexString(red, green, blue)).append((containsBold) ? "&l" : "").append(text.charAt(i));
         }
 
         return sb.toString();

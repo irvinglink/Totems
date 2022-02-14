@@ -1,6 +1,6 @@
-package com.github.irvinglink.Totems.editor;
+package com.github.irvinglink.Totems.editor.chat;
 
-import com.github.irvinglink.Totems.editor.handlers.TestHandler;
+import com.github.irvinglink.Totems.editor.chat.handlers.TestHandler;
 import org.bukkit.entity.Player;
 
 import java.util.Map;

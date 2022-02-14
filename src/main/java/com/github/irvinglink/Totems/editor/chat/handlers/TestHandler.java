@@ -1,7 +1,7 @@
-package com.github.irvinglink.Totems.editor.handlers;
+package com.github.irvinglink.Totems.editor.chat.handlers;
 
-import com.github.irvinglink.Totems.editor.EditorType;
-import com.github.irvinglink.Totems.editor.IChatEditor;
+import com.github.irvinglink.Totems.editor.chat.EditorType;
+import com.github.irvinglink.Totems.editor.chat.IChatEditor;
 import org.bukkit.entity.Player;
 
 public class TestHandler implements IChatEditor<Object> {

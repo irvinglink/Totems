@@ -76,7 +76,7 @@ public final class Chat {
      * the development.
      */
     public String getPluginPrefix() {
-        return "&8[&6SlashCodePlugin&8] ";
+        return "&8[&6Totems&8] ";
     }
 
     /**
@@ -191,6 +191,16 @@ public final class Chat {
      */
     public String replace(OfflinePlayer player, String text, boolean color) {
         return replace(player, null, null, text, color);
+    }
+
+    /**
+     * Replace the text with placeholders from PlaceholderAPI or
+     * registered by the plugin (for example: {@link ReplacementHook}).
+     * <p>
+     * This method inherits from {@link #replace(OfflinePlayer, OfflinePlayer, String, String, boolean)}
+     */
+    public String replace(String str, String text, boolean color) {
+        return replace(null, null, str, text, color);
     }
 
     /**

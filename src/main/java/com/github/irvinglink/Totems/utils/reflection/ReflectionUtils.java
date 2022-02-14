@@ -10,6 +10,9 @@ public class ReflectionUtils {
     protected static MClass plugin = MClass.getPlugin(MClass.class);
     protected static Chat chat = plugin.getChat();
 
+    protected static final String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+    protected static final int versionInt = Integer.parseInt((Bukkit.getBukkitVersion().split("-")[0]).split("\\.")[1]);
+
     protected static void sendPacket(Player player, Object packet) {
         try {
             Object handle = player.getClass().getMethod("getHandle").invoke(player);
@@ -22,9 +25,6 @@ public class ReflectionUtils {
     }
 
     public static Class<?> getNMSClass(String name) {
-
-        String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
-        int versionInt = Integer.parseInt((Bukkit.getBukkitVersion().split("-")[0]).split("\\.")[1]);
 
         String minecraftPacketVersion = (versionInt >= 17) ? "net.minecraft.network.protocol.game." : "net.minecraft.server." + version + ".";
 
@@ -52,6 +52,22 @@ public class ReflectionUtils {
         return null;
     }
 
+    public static Class<?> getWorldItemClass(String name) {
+        String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+        int versionInt = Integer.parseInt((Bukkit.getBukkitVersion().split("-")[0]).split("\\.")[1]);
+
+
+        String minecraftPacketVersion = (versionInt >= 17) ? "net.minecraft.world.item." : "net.minecraft.server." + version + ".";
+
+        try {
+            return Class.forName(minecraftPacketVersion + name);
+        } catch (ClassNotFoundException ignored) {
+            ignored.printStackTrace();
+        }
+
+        return null;
+    }
+
     public static Class<?> getBukkitClass(String name) {
         String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
         String minecraftPacketVersion = "org.bukkit.craftbukkit." + version + ".";
@@ -64,7 +80,5 @@ public class ReflectionUtils {
 
         return null;
     }
-
-
 
 }

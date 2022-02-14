@@ -1,4 +1,4 @@
-package com.github.irvinglink.Totems.editor;
+package com.github.irvinglink.Totems.editor.chat;
 
 import com.github.irvinglink.Totems.MClass;
 import com.github.irvinglink.Totems.utils.chat.Chat;

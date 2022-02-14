@@ -1,4 +1,4 @@
-package com.github.irvinglink.Totems.editor;
+package com.github.irvinglink.Totems.editor.chat;
 
 public enum EditorType {
 

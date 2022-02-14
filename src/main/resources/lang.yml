@@ -1,7 +1,17 @@
 Prefix: "&8[&6Totems&8]"
-Command_No_Exists:  "&cThat command does not exists&7."
-No_Permission: "&cYou do not have permission to do this&7."
-Wrong_Usage: "&cWrong usage. &b%totems_command_syntax%"
-Not_Use_Symbols: "&cYou can not use symbols&7."
-Reload_Files: "&aConfiguration files had been reloaded&7."
-Only_Numbers: "&cYou can only use numbers&7."
+Command_No_Exists:  "%totems_prefix% &cThat command does not exists&7."
+No_Permission: "%totems_prefix% &cYou do not have permission to do this&7."
+No_Permission_Console: "%totems_prefix% &cThis action can not be performed via console&7."
+Wrong_Usage: "%totems_prefix% &cWrong usage. &b%totems_command_syntax%"
+Not_Enough_Arguments: "%totems_prefix% &cNot enough arguments. &b%totems_command_syntax%"
+Not_Use_Symbols: "%totems_prefix% &cYou can not use symbols&7."
+Reload_Files: "%totems_prefix% &aConfiguration files had been reloaded&7."
+Only_Numbers: "%totems_prefix% &cYou can only use numbers&7."
+No_Colors: "%totems_prefix% &cYou can not use colors&7."
+Player_Not_Found: "%totems_prefix% &cPlayer not found&7."
+Player_Not_Online: "%totems_prefix% &cPlayer is not online&7."
+
+Commands:
+  TotemAdmin:
+    Editor_Enable: "%totems_prefix% &aEditor mode enable&7."
+    Editor_Disable: "%totems_prefix% &cEditor mode disable&7."

@@ -14,9 +14,9 @@ import org.bukkit.persistence.PersistentDataType;
  */
 public class PersistentDataContainerUtils {
 
-    private final MClass plugin = MClass.getPlugin(MClass.class);
+    private static final MClass plugin = MClass.getPlugin(MClass.class);
 
-    public void setItemKey(ItemStack itemStack, String key, String value) {
+    public static void setItemKey(ItemStack itemStack, String key, String value) {
         if (itemStack == null) return;
 
         ItemMeta itemMeta = itemStack.getItemMeta();
@@ -30,7 +30,7 @@ public class PersistentDataContainerUtils {
     }
 
 
-    public void setItemKey(ItemStack itemStack, String key, int value) {
+    public static void setItemKey(ItemStack itemStack, String key, int value) {
         if (itemStack == null) return;
 
         ItemMeta itemMeta = itemStack.getItemMeta();
@@ -44,7 +44,7 @@ public class PersistentDataContainerUtils {
 
     }
 
-    public void setBlockKey(Block block, String key, String value) {
+    public static void setBlockKey(Block block, String key, String value) {
         if (block == null) return;
 
         TileState blockState = (TileState) block.getState();
@@ -57,7 +57,7 @@ public class PersistentDataContainerUtils {
     }
 
 
-    public void setBlockKey(Block block, String key, int value) {
+    public static void setBlockKey(Block block, String key, int value) {
         if (block == null) return;
 
         TileState blockState = (TileState) block.getState();
@@ -69,7 +69,7 @@ public class PersistentDataContainerUtils {
         blockState.update();
     }
 
-    public String getItemString(ItemStack itemStack, String key) {
+    public static String getItemString(ItemStack itemStack, String key) {
         if (itemStack == null) return null;
 
         ItemMeta itemMeta = itemStack.getItemMeta();
@@ -82,7 +82,7 @@ public class PersistentDataContainerUtils {
         return dataContainer.getOrDefault(namespacedKey, PersistentDataType.STRING, "");
     }
 
-    public int getItemInt(ItemStack itemStack, String key) {
+    public static  int getItemInt(ItemStack itemStack, String key) {
         if (itemStack == null) return 0;
 
         ItemMeta itemMeta = itemStack.getItemMeta();
@@ -96,7 +96,7 @@ public class PersistentDataContainerUtils {
     }
 
 
-    public String getBlockString(Block block, String key) {
+    public static  String getBlockString(Block block, String key) {
         if (block == null) return null;
 
         TileState blockState = (TileState) block.getState();
@@ -107,7 +107,7 @@ public class PersistentDataContainerUtils {
         return dataContainer.getOrDefault(namespacedKey, PersistentDataType.STRING, "");
     }
 
-    public int getBlockInt(Block block, String key) {
+    public static int getBlockInt(Block block, String key) {
         if (block == null) return 0;
 
         TileState blockState = (TileState) block.getState();

@@ -1,7 +1,8 @@
 package com.github.irvinglink.Totems;
 
 import com.github.irvinglink.Totems.commands.admin.TotemAdminCommand;
-import com.github.irvinglink.Totems.editor.EditorHandler;
+import com.github.irvinglink.Totems.editor.chat.EditorHandler;
+import com.github.irvinglink.Totems.editor.inventory.EditorManager;
 import com.github.irvinglink.Totems.gui.manager.IMenu;
 import com.github.irvinglink.Totems.listeners.GuiEvents;
 import com.github.irvinglink.Totems.storage.Data;
@@ -10,6 +11,7 @@ import com.github.irvinglink.Totems.storage.YAML;
 import com.github.irvinglink.Totems.storage.database.MySQL;
 import com.github.irvinglink.Totems.storage.database.SQLite;
 import com.github.irvinglink.Totems.utils.chat.Chat;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -45,6 +47,8 @@ public class MClass extends JavaPlugin {
 
     private final Map<UUID, IMenu> playerMenus = Collections.synchronizedMap(new HashMap<>());
 
+    @Getter private EditorManager editorManager;
+
     @Override
     public void onLoad() {
 
@@ -54,6 +58,9 @@ public class MClass extends JavaPlugin {
 
         // setupDatabase(getConfig().getString("Database.host"), getConfig().getString("Database.database"), getConfig().getString("Database.username"), getConfig().getString("Database.password"));
         this.chat = new Chat();
+        this.editorManager = new EditorManager(this, chat);
+
+        chat.registerHooks();
 
     }
 
@@ -162,7 +169,7 @@ public class MClass extends JavaPlugin {
      */
     void updateFiles(File... files) {
 
-        getServer().getLogger().info("[YourPlugin] Updating files...");
+        getServer().getLogger().info("[Totems] Updating files...");
 
         for (File file : files) {
 
@@ -183,7 +190,7 @@ public class MClass extends JavaPlugin {
 
         }
 
-        getServer().getLogger().info("[YourPlugin] Files are now updated!");
+        getServer().getLogger().info("[Totems] Files are now updated!");
 
     }
 

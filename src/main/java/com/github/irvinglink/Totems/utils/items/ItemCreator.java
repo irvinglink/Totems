@@ -2,6 +2,8 @@ package com.github.irvinglink.Totems.utils.items;
 
 import com.github.irvinglink.Totems.MClass;
 import com.github.irvinglink.Totems.utils.chat.Chat;
+import com.github.irvinglink.Totems.utils.nbt.NBTUtils;
+import com.github.irvinglink.Totems.utils.persistentDataContainer.PersistentDataContainerUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -63,6 +65,16 @@ public abstract class ItemCreator {
             return setLore(loreList);
         }
 
+        public U setNBT(String key, String value) {
+            NBTUtils.setKey(itemStack, key, value);
+            return (U) this;
+        }
+
+        public U setNBT(String key, int value) {
+            NBTUtils.setKey(itemStack, key, value);
+            return (U) this;
+        }
+
         public U setDisplayName(String displayName) {
 
             this.itemMeta.setDisplayName(chat.replace(displayName, true));
@@ -83,6 +95,7 @@ public abstract class ItemCreator {
         public ItemStack build() {
             return this.itemStack;
         }
+
 
     }
 

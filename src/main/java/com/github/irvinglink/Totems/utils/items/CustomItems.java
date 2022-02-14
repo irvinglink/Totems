@@ -9,8 +9,8 @@ import java.util.List;
 
 public final class CustomItems extends ItemCreator {
 
-    public static Builder builder(ItemStack itemStack) {
-        return new Builder(itemStack);
+    public static Builder builder(Default itemStack) {
+        return new Builder(itemStack.getItemStack());
     }
 
     public static Builder builder(Material material, int amount) {
@@ -27,7 +27,10 @@ public final class CustomItems extends ItemCreator {
 
 
         MAIN_MENU("main_menu", Material.OAK_DOOR, "&aMain IMenu"),
-        SUPER_SWORD("super_sword", Material.DIAMOND_SWORD, "&aSuper Sword"),
+
+        // TOTEM EDITOR
+        TOTEM_STICK("totem_stick", Material.STICK, "&eTotem Selector"),
+
         ;
 
         private final String id;

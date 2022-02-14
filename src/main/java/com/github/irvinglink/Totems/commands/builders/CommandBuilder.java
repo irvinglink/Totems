@@ -1,6 +1,7 @@
 package com.github.irvinglink.Totems.commands.builders;
 
 import com.github.irvinglink.Totems.MClass;
+import com.github.irvinglink.Totems.enums.config.MESSAGES;
 import com.github.irvinglink.Totems.utils.chat.Chat;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -34,7 +35,7 @@ public abstract class CommandBuilder implements CommandExecutor {
         if (!cmd.getLabel().equalsIgnoreCase(this.cmdName))
             return true;
         if (!sender.hasPermission(this.permission)) {
-            sender.sendMessage(Objects.requireNonNull(this.chat.replace((Player) sender, this.plugin.getLang().getString("No_Permission"), true)));
+            sender.sendMessage(Objects.requireNonNull(this.chat.replace((Player) sender, MESSAGES.NO_PERMISSION.getMessage(), true)));
             return true;
         }
 
@@ -43,7 +44,7 @@ public abstract class CommandBuilder implements CommandExecutor {
         x.append(" ");
         
         if (!this.console && !(sender instanceof Player)) {
-            x.append("&aOnly players can use this command");
+            x.append(MESSAGES.NO_PERMISSION_CONSOLE.getMessage());
             sender.sendMessage(this.chat.str(x.toString()));
             return true;
         }
